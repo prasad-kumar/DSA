@@ -7,11 +7,11 @@ class Hashtable:
         self.arr = [None]*self.max
     
     def get_hash(self, key):
-        sum = 0
-        for i in key:
-            c = ord(i)
-            sum += c
-        return sum % self.max
+        hash = 0
+        for char in key:
+            c = ord(char)
+            hash += c
+        return hash % self.max
 
     def __setitem__(self, key, value):
         h = self.get_hash(key)

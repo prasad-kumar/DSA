@@ -73,6 +73,7 @@ class Linkedlist:
 
         if index == 0:
             node = self.insert_at_begining(data)
+            return
 
         itr = self.head
         count = 0

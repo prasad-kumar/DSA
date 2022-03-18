@@ -1,18 +1,31 @@
-#binary search
+#Binary Search algorithm for repeted numbers
+
+def test_location(cards, query, mid):
+    mid_number = cards[mid]
+    if mid_number == query:
+        if  mid-1 >= 0 and cards[mid-1] == query:
+            return 'left'
+        else:
+            return 'found'
+    elif mid_number < query:
+        return 'right'
+    else:
+        return 'left'
+
 
 def binary_search(cards, query):
     low, high = 0, len(cards) - 1
     while low <= high:
         mid = (low + high) // 2
         mid_number = cards[mid]
-        if mid_number == query:
+        result = test_location(cards, query,mid)
+        if result == "found":
             return mid
-        elif mid_number < query:
+        elif result == "right":
             low = mid + 1
-        elif mid_number > query:
+        elif result == "left":
             high = mid - 1
     return -1
-
 
 # Testing
 tests = []
@@ -67,7 +80,13 @@ tests.append({
     },
     'output': 17
 })
-
+tests.append({
+    'input': {
+        'cards': [1,2,2,2,3,4,4,4,4,4,4,5,5,5,5,6,7,8,9],
+        'query': 4
+    },
+    'output': 5
+})
 
 def evaluate_test_cases(tests, fun):
     results = []

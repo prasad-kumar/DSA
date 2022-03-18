@@ -31,10 +31,18 @@ class Hashtable:
             if element[0] == key:
                 return element[1]
 
+    def __delitem__(self, key):
+        h = self.get_hash(key)
+        for idx, element in enumerate(self.arr[h]):
+            if element[0] == key:
+                del self.arr[h][idx]
+                break
+
 
 ht = Hashtable()
 
 ht['march 6'] = 325
+ht['march 8'] = 345
 ht['march 7'] = 330
 ht['march 17'] = 335
 print(ht.arr)
@@ -42,6 +50,8 @@ print(ht['march 6'])
 ht['march 6'] = 355
 print(ht.arr)
 print(ht['march 6'])
+del ht['march 8']
+print(ht.arr)
 
 
 

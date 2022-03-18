@@ -4,7 +4,7 @@
 class Hashtable:
     def __init__(self):
         self.max = 10
-        self.arr = [None]*self.max
+        self.arr = [[] for i in range(self.max)]
     
     def get_hash(self, key):
         hash = 0
@@ -21,7 +21,15 @@ class Hashtable:
         h = self.get_hash(key)
         return self.arr[h]
 
+    def __delitem__(self, key):
+        h = self.get_hash(key)
+        del self.arr[h]
+
 h = Hashtable()
 h["march 6"] = 302
 print(h["march 6"])
+print(h.arr)
+h['march 8'] = 303
+print(h.arr)
+del h['march 8']
 print(h.arr)

@@ -1,7 +1,6 @@
 # implemeneting Queue class using collecions.deque
 
 from collections import deque
-from turtle import st
 
 
 class Queue:

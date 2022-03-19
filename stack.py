@@ -2,7 +2,6 @@
 
 from collections import deque
 
-
 class Stack:
     def __init__(self):
         self.stack = deque()
@@ -38,3 +37,23 @@ print(s.stack)
 print(s.peek())
 print(s.size())
 print(s.is_empty())
+
+
+
+#using list as stack
+
+url = []
+
+url.append('www.amazon.com')
+url.append('www.amazon.com/Products')
+url.append('www.amazon.com/Cart')
+url.append('www.amazon.com/Checkout')
+
+print(url)
+
+url.pop()
+print(url)
+url.pop()
+print(url)
+url.pop()
+print(url)

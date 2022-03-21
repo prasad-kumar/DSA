@@ -100,6 +100,7 @@ class Linkedlist:
         while itr:
             if count == index - 1:
                 itr.next= itr.next.next
+                itr.next.prev = itr
                 
             itr = itr.next
             count += 1
@@ -118,6 +119,9 @@ if __name__ == "__main__":
     ll.print_forward()
     ll.print_backward()
     ll.remove_at(4)
+    ll.print_forward()
+    ll.print_backward()
     ll.insert_values([7,8,9,10])
     ll.print_forward()
+    ll.print_backward()
     

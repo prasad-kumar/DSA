@@ -1,7 +1,4 @@
-
-
-from itertools import count
-from tkinter.messagebox import NO
+# Linkedlist in Python
 
 
 class Node:

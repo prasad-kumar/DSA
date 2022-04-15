@@ -24,7 +24,7 @@ class Graph:
             startNode = queue.pop(0)
             path.append(startNode)
 
-            for i in self.graph_dict:
+            for i in self.graph_dict[startNode]:
                 # if visited[i] == False:   #if its graph_dict have int keys
                 if i not in visited:
                     queue.append(i)
@@ -62,7 +62,7 @@ g = Graph(routes)
 result = g.bfs('mumbai')
 print('BFS :', result)
 
-result2 = g.dfs('mumbai')
+result2 = g.dfs('torrento')
 print('DFS :', result2)
 
 

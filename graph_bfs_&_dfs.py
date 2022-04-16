@@ -14,36 +14,30 @@ class Graph:
     
     def bfs(self, startNode):
         # visited = [False] * self.graph_dict   #if its graph_dict have int keys
-        visited = {}
+        visited = set()
         queue = []
-        path = []
-        visited[startNode] = True
+        visited.add(startNode)
         queue.append(startNode)
 
         while queue:
             startNode = queue.pop(0)
-            path.append(startNode)
 
             for i in self.graph_dict[startNode]:
-                # if visited[i] == False:   #if its graph_dict have int keys
                 if i not in visited:
                     queue.append(i)
-                    visited[i] = True
-        return path
+                    visited.add(i)
+        return visited
 
-    def dfs(self, start):
-        stack = [start]
-        path = []
-        while stack:
-            v = stack.pop()
-            if v in path:
-                continue
-            path.append(v)
-            for i in self.graph_dict[v]:
-                stack.append(i)
 
-        return path
+    def dfs(self,start, visited = set()):
+        visited.add(start)
 
+        for node in self.graph_dict[start]:
+            if node not in visited:
+                self.dfs(node, visited)
+
+        return visited
+                
         
 routes = [
     ('mumbai','paris'),
@@ -56,13 +50,12 @@ routes = [
     ('torrento','newyork'),
     ]
 
-
 g = Graph(routes)
 
 result = g.bfs('mumbai')
 print('BFS :', result)
 
-result2 = g.dfs('torrento')
-print('DFS :', result2)
+
+print('DFS :', g.dfs('dubai'))
 
 
